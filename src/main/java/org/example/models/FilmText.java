@@ -23,7 +23,7 @@ public class FilmText {
     @Column(name = "description", length = Length.LONG16)
     private String description;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "film_id", nullable = false)
     private Film film;
 }

@@ -20,11 +20,11 @@ public class Store {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Byte id;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "manager_staff_id", nullable = false, unique = true)
     private Staff managerStaff;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "address_id", nullable = false)
     private Address address;
 

@@ -11,8 +11,8 @@ import java.util.List;
 @Getter
 @Setter
 public class AbstractHibernateRepository<T> {
-    private final Class<T> clazz;
-    private final SessionFactory sessionFactory;
+    protected final Class<T> clazz;
+    protected final SessionFactory sessionFactory;
 
     public AbstractHibernateRepository(final Class<T> entityClazz, SessionFactory sessionFactory) {
         this.clazz = entityClazz;

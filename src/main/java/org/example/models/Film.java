@@ -38,11 +38,11 @@ public class Film {
     @Column(name = "release_year")
     private Date releaseYear;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "language_id", nullable = false)
     private Language language;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "original_language_id")
     private Language originalLanguage;
 
@@ -71,17 +71,17 @@ public class Film {
     @UpdateTimestamp
     private Date lastUpdate;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "film_actor",
             joinColumns = @JoinColumn(name = "film_id", referencedColumnName = "film_id"),
             inverseJoinColumns = @JoinColumn(name = "actor_id", referencedColumnName = "actor_id")
     )
     private Set<Actor> actors = new HashSet<>();
 
-    @OneToOne(mappedBy = "film")
+    @OneToOne(mappedBy = "film", fetch = FetchType.LAZY)
     private FilmText text;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "film_category",
             joinColumns = @JoinColumn(name = "film_id", referencedColumnName = "film_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id", referencedColumnName = "category_id")
